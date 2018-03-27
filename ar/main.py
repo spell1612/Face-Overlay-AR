@@ -9,7 +9,7 @@ import numpy as np
 from video import create_capture
 import sys
 
-predictor_path = "resources/landmark_predictor.dat"
+predictor_path = "D:\DevStuff\AR project\\ar\\resources\landmark_predictor.dat"
 detector = dlib.get_frontal_face_detector()
 predictor = dlib.shape_predictor(predictor_path)
 
@@ -349,8 +349,8 @@ def main():
     args = sys.argv
     should_show_bounds = False
 
-    glasses = cv2.imread('resources/glasses.png', -1)
-    moustache = cv2.imread('resources/moustache.png', -1)
+    glasses = cv2.imread('D:\DevStuff\AR project\\ar\\resources\glasses.png', -1)
+    moustache = cv2.imread('D:\DevStuff\AR project\\ar\\resources\moustache.png', -1)
 
     if "--face-swap" in args:
         if "--bryan" in args:

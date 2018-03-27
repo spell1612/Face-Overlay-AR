@@ -8,7 +8,7 @@ cap = cv2.VideoCapture(0)
 # read both the images of the face and the glasses
 while True:
     ret, image = cap.read()
-    glass_img = cv2.imread('/home/spell/AR projects/AR-testing/OpenCV-Eye-detection-example--Try-out-glasses-using-OpenCV/glass_image.jpg')
+    glass_img = cv2.imread('D:\DevStuff\AR project\OpenCV-Eye-detection-example--Try-out-glasses-using-OpenCV\glass_image.jpg')
     gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
     centers = []
     faces = face_cascade.detectMultiScale(gray, 1.2, 5)

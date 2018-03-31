@@ -1,10 +1,13 @@
 import numpy as np
 import cv2
 import dlib
+import os
 from scipy.spatial import distance as dist
 from scipy.spatial import ConvexHull
 
-PREDICTOR_PATH = "D:\DevStuff\AR project\Tester\\resources\\landmark_predictor.dat"
+dirpath = os.getcwd()
+
+PREDICTOR_PATH = dirpath+"\\resources\\landmark_predictor.dat"
 
 FULL_POINTS = list(range(0, 68))
 FACE_POINTS = list(range(17, 68))
@@ -17,13 +20,16 @@ RIGHT_EYE_POINTS = list(range(36, 42))
 LEFT_EYE_POINTS = list(range(42, 48))
 MOUTH_OUTLINE_POINTS = list(range(48, 61))
 MOUTH_INNER_POINTS = list(range(61, 68))
+BOTH_EYES=list(range(36,48))
+
+
 
 detector = dlib.get_frontal_face_detector()
 
 predictor = dlib.shape_predictor(PREDICTOR_PATH)
 
 def eye_size(eye):
-    eyeWidth = dist.euclidean(eye[0], eye[3])
+    eyeWidth = dist.euclidean(eye[0], eye[6])
     hull = ConvexHull(eye)
     eyeCenter = np.mean(eye[hull.vertices, :], axis=0)
 
@@ -32,10 +38,10 @@ def eye_size(eye):
     return int(eyeWidth), eyeCenter
 
 def place_eye(frame, eyeCenter, eyeSize):
-    eyeSize = int(eyeSize * 1.5)
+    eyeSize = int(eyeSize*1.25)
 
-    x1 = int(eyeCenter[0,0] - (eyeSize/2))
-    x2 = int(eyeCenter[0,0] + (eyeSize/2))
+    x1 = int(eyeCenter[0,0] - (eyeSize))
+    x2 = int(eyeCenter[0,0] + (eyeSize))
     y1 = int(eyeCenter[0,1] - (eyeSize/2))
     y2 = int(eyeCenter[0,1] + (eyeSize/2))
 
@@ -79,7 +85,7 @@ def place_eye(frame, eyeCenter, eyeSize):
 # Load and pre-process the eye-overlay
 #---------------------------------------------------------
 # Load the image to be used as our overlay
-imgEye = cv2.imread('D:\DevStuff\AR project\Tester\\resources\glass1.png',-1)
+imgEye = cv2.imread(dirpath+'\\resources\glass1.png',-1)
 
 # Create the mask from the overlay image
 orig_mask = imgEye[:,:,3]
@@ -111,16 +117,22 @@ while True:
 
        landmarks = np.matrix([[p.x, p.y] for p in predictor(frame, rect).parts()])
 
-       left_eye = landmarks[LEFT_EYE_POINTS]
-       right_eye = landmarks[RIGHT_EYE_POINTS]
+       # left_eye = landmarks[LEFT_EYE_POINTS]
+       # right_eye = landmarks[RIGHT_EYE_POINTS]
+       both_eyes=landmarks[BOTH_EYES]
+
 
        # cv2.rectangle(frame, (x, y), (x1, y1), (0, 255, 0), 2)
 
-       leftEyeSize, leftEyeCenter = eye_size(left_eye)
-       rightEyeSize, rightEyeCenter = eye_size(right_eye)
+       # leftEyeSize, leftEyeCenter = eye_size(left_eye)
+       # rightEyeSize, rightEyeCenter = eye_size(right_eye)
+       totalSize,avgCent=eye_size(both_eyes)
 
-       place_eye(frame, leftEyeCenter, leftEyeSize)
-       place_eye(frame, rightEyeCenter, rightEyeSize)
+       # totalSize=(leftEyeSize+rightEyeSize)*1.5
+       # avgCent=(leftEyeCenter+rightEyeCenter)/2
+
+       place_eye(frame, avgCent, totalSize)
+       # place_eye(frame, rightEyeCenter, rightEyeSize)
 
      cv2.imshow("Faces with Overlay", frame)
 

@@ -14,7 +14,7 @@ And the following libraries
 5. scipy
 
 ### Setup Instructions 
-* Clone Repository `git clone https://github.com/spell1612/Face-Overlay.git` 
-* cd into directory `cd Face-Overlay` 
+* Clone Repository `git clone https://github.com/spell1612/Face-Overlay-AR.git` 
+* cd into directory `cd Face-Overlay-AR` 
 * Run `python GlassFace.py` 
 * Press 'q' exit

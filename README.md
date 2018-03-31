@@ -1,5 +1,5 @@
 # Face-Overlay
-Face Overlay using python and opencv
+Face Overlay on video input using python and opencv
 
 ## Glass overlay on face using python/opencv/dlib
 

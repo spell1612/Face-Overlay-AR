@@ -18,3 +18,4 @@ And the following libraries
 *cd into directory
 `cd Face-Overlay`
 *Run `python GlassFace.py`
+*Press 'q' exit

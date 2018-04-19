@@ -10,7 +10,7 @@ And the following libraries
 
 2. opencv 
 3. dlib 
-4. numpy (Required dependancy for previous) 
+4. numpy (Required dependency for previous) 
 5. scipy
 
 ### Setup Instructions 

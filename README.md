@@ -18,3 +18,11 @@ And the following libraries
 * cd into directory `cd Face-Overlay-AR` 
 * Run `python GlassFace.py` 
 * Press 'q' exit
+
+## Screencaps
+Using HaarCascades
+![screen1](https://i.imgur.com/oPj8hWr.png)
+
+Using Landmark Predictor and dlib
+![screen2](https://i.imgur.com/QDpSLSc.png)
+![screen3](https://i.imgur.com/6J3dzpM.png)

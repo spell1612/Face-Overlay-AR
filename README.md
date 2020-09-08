@@ -1,5 +1,6 @@
 # Face-Overlay
-Face Overlay on video input using python and opencv
+Face Overlay on video input using python and opencv.
+User's Face is detected and an image of a pair of shades is overlayed over the eyes live.
 
 ## Glass overlay on face using python/opencv/dlib
 

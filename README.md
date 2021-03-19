@@ -21,9 +21,6 @@ And the following libraries
 * Press 'q' exit
 
 ## Screencaps
-Using HaarCascades
-![screen1](https://i.imgur.com/oPj8hWr.png)
-
 Using Landmark Predictor and dlib
 ![screen2](https://i.imgur.com/QDpSLSc.png)
 ![screen3](https://i.imgur.com/6J3dzpM.png)

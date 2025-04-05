@@ -1,6 +1,7 @@
 # Face-Overlay
-Face Overlay on video input using python and opencv.
+Face Overlay on video input using the dlib deep learning library for python and computer vision through opencv.
 User's Face is detected and an image of a pair of shades is overlayed over the eyes live.
+Used the landmark_predictor.dat pre trained model
 
 ## Glass overlay on face using python/opencv/dlib
 
